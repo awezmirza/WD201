@@ -10,6 +10,7 @@ const todoList = () => {
   };
 
   const overdue = () => {
+    console.log(all.filter((xyz) => xyz.dueDate < today));
     return all.filter((xyz) => xyz.dueDate < today);
   };
 
@@ -18,6 +19,7 @@ const todoList = () => {
   };
 
   const dueLater = () => {
+    console.log(all.filter((xyz) => xyz.dueDate > today));
     return all.filter((xyz) => xyz.dueDate > today);
   };
 
@@ -52,13 +54,13 @@ const todoList = () => {
   };
 };
 
-const formattedDate = (d) => {
-  return d.toLocaleDateString("en-CA");
-};
+// const formattedDate = (d) => {
+//   return d.toLocaleDateString("en-CA");
+// };
 
-var dateToday = new Date();
+// var dateToday = new Date();
 
-const today = formattedDate(dateToday);
+const today = new Date().toISOString().substring(0, 10);
 
 // eslint-disable-next-line no-undef
 module.exports = todoList;

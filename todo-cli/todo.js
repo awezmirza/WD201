@@ -10,7 +10,7 @@ const todoList = () => {
   };
 
   const overdue = () => {
-    console.log(all.filter((xyz) => xyz.dueDate < today));
+    // console.log(all.filter((xyz) => xyz.dueDate < today));
     return all.filter((xyz) => xyz.dueDate < today);
   };
 
@@ -19,7 +19,7 @@ const todoList = () => {
   };
 
   const dueLater = () => {
-    console.log(all.filter((xyz) => xyz.dueDate > today));
+    // console.log(all.filter((xyz) => xyz.dueDate > today));
     return all.filter((xyz) => xyz.dueDate > today);
   };
 

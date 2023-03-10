@@ -50,18 +50,45 @@ describe("Todolist Test Suite", () => {
     });
     expect(all.length).toBe(itemscount + 1);
   });
+
   test("Mark as complete", () => {
     expect(all[0].completed).toBe(false);
     markAsComplete(0);
     expect(all[0].completed).toBe(true);
   });
+
   test("Overdue wala", () => {
-    expect(overdue().length).toBe(1);
+    // console.log(overdue().length)
+    let OverdueLength = overdue().length;
+    add({
+      title: "Overdue Added",
+      completed: false,
+      dueDate: new Date(dateToday.getTime("en-CA") - 86400000)
+        .toISOString()
+        .substring(0, 10),
+    });
+    expect(overdue().length).toBe(OverdueLength + 1);
   });
+
   test("Due Later", () => {
-    expect(dueLater().length).toBe(2);
+    let DueLaterLength = dueLater().length;
+    add({
+      title: "Due Later Added",
+      completed: false,
+      dueDate: new Date(dateToday.getTime("en-CA") + 86400000)
+        .toISOString()
+        .substring(0, 10),
+    });
+    expect(dueLater().length).toBe(DueLaterLength + 1);
   });
+
   test("Due Today", () => {
-    expect(dueToday().length).toBe(1);
+    let DueToday = dueToday().length;
+    add({
+      title: "Due Today Added",
+      completed: false,
+      dueDate: new Date().toISOString().substring(0, 10),
+    });
+    expect(dueToday().length).toBe(DueToday + 1);
   });
 });
